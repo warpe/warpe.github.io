@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>FAR _</title>
+		<title>Calcisa</title>
 		<!-- Include meta tag to ensure proper rendering and touch zooming -->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -104,52 +104,45 @@
 			}
 		</style>
 		<script> 
-			function main(){
-				//$("#myPopup").popup("open"); 
+			function calculate(){
+				var i, n, r; 
+				i = document.getElementById("inputNum").value; 
+				r = i % 99; 
+				n = (i - r) / 99; 
+				if((99 * n + r) != i){
+					$("#myPopup").popup("open"); 
+				}else{ 
+					document.getElementById("foot").innerHTML = "99 * "+n+" + "+r+" = "+(99*n+r); 
+				}
 			}
 
 		</script>
 	</head>
 	<body>
-		<div id="pageone" data-role="page" data-theme="a">
-
-			<div data-role="popup" id="myPopup" class="ui-content"> 
-				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-left">Close</a> 
-				<p>Whoopsie ding dong! Something went wrong :(</p>
-			</div> 
+		<div data-role="page" data-theme="b">
 			
 			<div data-role="header"> 
-				<a href="#" class="ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext">Back</a>
-				<h1>FAR _</h1> 
-				<a href="#" class="ui-btn ui-corner-all ui-icon-gear ui-btn-icon-notext">Settings</a>
+				<h1>Calcisa</h1>
 		  	</div>
 
 			<div data-role="main" class="ui-content"> 
 				<div class="ui-field-contain">
-				    <input type="search" name="search" id="search-basic" value="" />
-				    <select name="flip-1" id="flip-1" data-role="slider">
-						<option value="off">Off</option>
-						<option value="on">On</option>
-					</select> <br/>
-					<select name="flip-1" id="flip-1" data-role="slider">
-						<option value="off">Off</option>
-						<option value="on">On</option>
-					</select> 
+				    <input type="tel" name="inputNum" id="inputNum"> 
 				</div>
 			</div>
 
 			<div data-role="navbar">
-				<ul>
-					<li><a data-icon="home" href="calcisa.html" data-transition="slide" data-direction="reverse"></a></li>
-					<li><a data-icon="heart"></a></li>
-					<li><a data-icon="bullets"></a></li>
-					<li><a data-icon="comment"></a></li>
-					<li><a data-icon="user"></a></li>
-				</ul>
+				<a onclick="calculate()" data-icon="arrow-d"></a>
 			</div>
 
+			<div data-role="popup" id="myPopup" class="ui-content"> 
+				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-left">Close</a> 
+				<p>Whoopsie ding dong! Something went wrong :(</p> <br/>
+				<p>Please enter numbers only, no spacing. </p>
+			</div> 
+
 			<div data-role="footer">
-				<h2 id="footer">&copy; 2016</h2>
+				<h2 id="foot">0</h2>
 			</div>
 		</div>
 	</body>
