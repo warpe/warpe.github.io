@@ -102,6 +102,13 @@
 					text-decoration: none; 
 				}
 			}
+
+			canvas{
+				border: 5px solid grey; 
+				margin-left: -10px; 
+				margin-top: -10px;
+			}
+
 		</style>
 		<script> 
 
@@ -109,6 +116,205 @@
 				$("#myPopup").popup("open"); 
 			}
 
+			var canvas, ctx; 
+
+			var rowa = [1, 5, 3]; 
+			var rowb = [6, 4, 8]; 
+			var rowc = [2, 7, 1]; 
+			var data = [rowa, rowb, rowc]; 
+
+			window.onload = function main(){
+
+				canvas = document.createElement("canvas"); 
+				canvas.width = canvas.height = 3 * 100; 
+				ctx = canvas.getContext("2d"); 
+
+				document.getElementById("gameContainer").appendChild(canvas); 
+
+				render(); 
+
+
+				//canvas.addEventListener("mousedown", mouseDown); 
+				canvas.addEventListener('mousedown', function(evt) {
+
+				    var mousePos = getMousePos(canvas, evt);
+				    mousePos.x -= mousePos.x % 100; 
+				    mousePos.y -= mousePos.y % 100; 
+				    var cell = data[(mousePos.y / 100)][(mousePos.x/100)]; 
+				    
+					ctx.clearRect (0, 0, canvas.width, canvas.height);
+
+			    	data[(mousePos.y / 100)][(mousePos.x / 100)] = rotateCell(cell); 
+
+				    render();
+				    
+					//console.log(data); 
+
+					checkAnswer(); 
+
+			  	}, false);
+			}	
+
+			function render(){
+
+				var x = y = 0; 
+				for (var i = 0; i < data.length; i++) {
+					for (var j = 0; j < data[i].length; j++) {
+					
+						ctx.beginPath(); 
+						ctx.moveTo(x, y); 
+						ctx.lineTo(x + 100, y); 
+						ctx.lineTo(x + 100, y + 100); 
+						ctx.lineTo(x, y + 100); 
+						ctx.lineTo(x, y); 
+						ctx.strokeStyle = "grey"; 
+						ctx.lineWidth = 5; 
+						ctx.stroke(); 
+						ctx.fillStyle = "white"; //getRandomColor(); 
+						ctx.fill(); 
+
+						drawItem(x, y, data[i][j]); 
+
+						x += 100; 
+					}
+					x = 0; 
+					y += 100;
+				};
+			}
+
+			function checkAnswer(){
+				var status = [[3, 6, 4], [5, 3, 10], [2, 7, 1]]; 
+				var correct = 0; 
+				for (var i = 0; i < data.length; i++) {
+					for (var j = 0; j < data[i].length; j++) {
+						if(status[i][j] == data[i][j]){
+							correct++; 
+						} 
+						//console.log(correct); 
+					}
+				}
+
+				if (correct == 9){
+					main(); 
+				}
+			}
+
+			function drawItem(x, y, type){
+				var x = x, y = y, type = type; 
+				ctx.beginPath(); 
+				
+				switch(type){
+					case 0: 
+						ctx.moveTo(x + 50, y); 
+						ctx.lineTo(x + 50, y + 100); 
+						ctx.moveTo(x, y + 50); 
+						ctx.lineTo(x + 100, y + 50); 
+					;break; 
+
+					case 1: 
+						ctx.moveTo(x + 50, y); 
+						ctx.lineTo(x + 50, y + 50); 
+						ctx.lineTo(x, y + 50); 
+					;break; 
+					case 2: 
+						ctx.moveTo(x + 50, y); 
+						ctx.lineTo(x + 50, y + 50); 
+						ctx.lineTo(x + 100, y + 50); 
+					;break; 
+					case 3: 
+						ctx.moveTo(x + 100, y + 50); 
+						ctx.lineTo(x + 50, y + 50); 
+						ctx.lineTo(x + 50, y + 100); 
+					;break; 
+					case 4: 
+						ctx.moveTo(x, y + 50); 
+						ctx.lineTo(x + 50, y + 50); 
+						ctx.lineTo(x + 50, y + 100); 
+					;break; 
+
+					case 5: 
+						ctx.moveTo(x + 50, y); 
+						ctx.lineTo(x + 50, y + 100); 
+					;break; 
+					case 6: 
+						ctx.moveTo(x, y + 50); 
+						ctx.lineTo(x + 100, y + 50); 
+					;break; 
+
+					case 7: 
+						ctx.moveTo(x, y + 50); 
+						ctx.lineTo(x + 100, y + 50); 
+						ctx.moveTo(x + 50, y + 50); 
+						ctx.lineTo(x + 50, y); 
+					;break; 
+					case 8: 
+						ctx.moveTo(x + 50, y); 
+						ctx.lineTo(x + 50, y + 100); 
+						ctx.moveTo(x + 50, y + 50); 
+						ctx.lineTo(x + 100, y + 50); 
+					;break; 
+					case 9: 
+						ctx.moveTo(x, y + 50); 
+						ctx.lineTo(x + 100, y + 50); 
+						ctx.moveTo(x + 50, y + 50); 
+						ctx.lineTo(x + 50, y + 100); 
+					;break; 
+					case 10: 
+						ctx.moveTo(x + 50, y); 
+						ctx.lineTo(x + 50, y + 100); 
+						ctx.moveTo(x + 50, y + 50); 
+						ctx.lineTo(x, y + 50); 
+					;break; 
+				}
+				
+				ctx.lineWidth = 5; 
+				ctx.strokeStyle = "black"; 
+				ctx.stroke(); 
+			}
+
+			function getRandomColor() {
+			    var letters = '0123456789ABCDEF'.split('');
+			    var color = '#';
+			    for (var i = 0; i < 6; i++ ) {
+			        color += letters[Math.floor(Math.random() * 16)];
+			    }
+			    return color;
+			}
+
+			function getMousePos(canvas, evt) {
+			    
+			    var rect = canvas.getBoundingClientRect();
+			    return {
+			      	x: evt.clientX - rect.left,
+			      	y: evt.clientY - rect.top
+			    };
+			}
+
+			function rotateCell(cell){
+				var cell = cell; 
+				if(cell == 1 || cell == 2 || cell == 3){
+					cell++; 
+				}
+				else if(cell == 4){
+					cell = 1; 
+				}
+				
+				if(cell == 5){
+					cell = 6; 
+				}
+				else if(cell == 6){
+					cell = 5; 
+				}
+
+				if(cell == 7 || cell == 8 || cell == 9){
+					cell++; 
+				}
+				else if(cell == 10){
+					cell = 7; 
+				}
+
+				return cell; 
+			}
 		</script>
 	</head>
 	<body>
@@ -151,15 +357,18 @@
 
 			<div data-role="main" class="ui-content"> 
 				<div class="ui-field-contain">
-					<p>
-						//GAME
-					</p>
+					<div id="gameContainer">
+					</div>
 				</div>
 			</div> 
 			
 			<div data-role="footer">
 				<h2 id="footer">//ADVERTISEMENT</h2>
 			</div>
+			<div data-role="popup" id="myPopup" class="ui-content"> 
+				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-left">Close</a> 
+				<p>Whoopsie ding dong! Something went wrong :(</p>
+			</div> 
 		</div>
 	</body>
 </html>
