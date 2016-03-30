@@ -104,6 +104,11 @@
 			}
 		</style>
 		<script> 
+
+			$( "#calBtn" ).bind( "click", function(event, ui) { 
+				calculate(); 
+			});
+
 			function calculate(){
 				var i, n, r; 
 				i = document.getElementById("inputNum").value; 
@@ -128,7 +133,7 @@
 		  	<div data-role="main" class="ui-content"> 
 				<div class="ui-field-contain">
 				    <input type="tel" name="inputNum" id="inputNum" value=""/> 
-				    <a onclick="calculate()" class="ui-btn ui-btn-right ui-corner-all ui-icon-arrow-r ui-btn-icon-notext">Back</a>
+				    <a id="calBtn" name"calBtn" class="ui-btn ui-btn-right ui-corner-all ui-icon-arrow-r ui-btn-icon-notext">Back</a>
 				</div>
 			</div>
 

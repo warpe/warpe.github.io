@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>FAR _</title>
+		<!-- <title>//TITLE</title> -->
 		<!-- Include meta tag to ensure proper rendering and touch zooming -->
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -105,51 +105,59 @@
 		</style>
 		<script> 
 			function main(){
-				//$("#myPopup").popup("open"); 
+				$("#myPopup").popup("open"); 
 			}
 
 		</script>
 	</head>
 	<body>
-		<div id="pageone" data-role="page" data-theme="a">
+		<div id="homePage" data-role="page" data-theme="a">
+			
+			<div data-role="header"> 
+				<a onclick="main()" class="ui-btn ui-corner-all ui-icon-info ui-btn-icon-notext">Info</a>
+				<h1>GAME</h1> 
+				<a onclick="main()" class="ui-btn ui-corner-all ui-icon-gear ui-btn-icon-notext">Settings</a>
+		  	</div>
+
+			<div data-role="main" class="ui-content"> 
+				<div class="ui-field-contain">
+					<p>
+						//MAIN BACKGROUND
+					</p>
+				</div>
+			</div> 
+			
+			<a href="#gamePage" data-role="button">PLAY</a>
+	
+			<div data-role="footer">
+				<h2 id="footer">//ADVERTISEMENT</h2>
+			</div>
 
 			<div data-role="popup" id="myPopup" class="ui-content"> 
 				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-left">Close</a> 
 				<p>Whoopsie ding dong! Something went wrong :(</p>
 			</div> 
+		</div>
+
+
+		<div id="gamePage" data-role="page" data-theme="a">
 			
 			<div data-role="header"> 
-				<a href="#" class="ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext">Back</a>
-				<h1>FAR _</h1> 
+				<a href="#homePage" class="ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext">Back</a>
+				<h1>GAME</h1> 
 				<a href="#" class="ui-btn ui-corner-all ui-icon-gear ui-btn-icon-notext">Settings</a>
 		  	</div>
 
 			<div data-role="main" class="ui-content"> 
 				<div class="ui-field-contain">
-				    <input type="search" name="search" id="search-basic" value="" />
-				    <select name="flip-1" id="flip-1" data-role="slider">
-						<option value="off">Off</option>
-						<option value="on">On</option>
-					</select> <br/>
-					<select name="flip-1" id="flip-1" data-role="slider">
-						<option value="off">Off</option>
-						<option value="on">On</option>
-					</select> 
+					<p>
+						//GAME
+					</p>
 				</div>
-			</div>
-
-			<div data-role="navbar">
-				<ul>
-					<li><a data-icon="home" href="calcisa.html" data-transition="slide" data-direction="reverse"></a></li>
-					<li><a data-icon="heart"></a></li>
-					<li><a data-icon="bullets"></a></li>
-					<li><a data-icon="comment"></a></li>
-					<li><a data-icon="user"></a></li>
-				</ul>
-			</div>
-
+			</div> 
+			
 			<div data-role="footer">
-				<h2 id="footer">&copy; 2016</h2>
+				<h2 id="footer">//ADVERTISEMENT</h2>
 			</div>
 		</div>
 	</body>
