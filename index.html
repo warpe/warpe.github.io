@@ -13,6 +13,10 @@
 	        	$.mobile.hashListeningEnabled = false;
 	        	$.mobile.pushStateEnabled = false;
 	    	});
+	    	$('html, body').on('touchstart touchmove', function(e){ 
+			    //prevent native touch activity like scrolling
+			    e.preventDefault(); 
+			});
 		</script> 
 		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 		<style>
