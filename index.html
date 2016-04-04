@@ -179,38 +179,9 @@
 		<div id="homePage" data-role="page" data-theme="a">
 			
 			<div data-role="header"> 
-				<a onclick="main()" class="ui-btn ui-corner-all ui-icon-info ui-btn-icon-notext">Info</a>
+				<a onclick="main()" class="ui-btn ui-corner-all ui-icon-bars ui-btn-icon-notext">Info</a>
 				<h1>GAME</h1> 
 				<a onclick="main()" class="ui-btn ui-corner-all ui-icon-gear ui-btn-icon-notext">Settings</a>
-		  	</div>
-
-			<div data-role="main" class="ui-content"> 
-				<div class="ui-field-contain">
-					<p>
-						//MAIN BACKGROUND
-					</p>
-				</div>
-			</div> 
-			
-			<a href="#gamePage" data-role="button" style="position: fixed; bottom: 3em; left: 0.5em; right: 0.5em;">PLAY</a>
-	
-			<div data-role="footer" style="position: fixed; bottom: 0; left: 0; right: 0;">
-				<h2 id="footer">//ADVERTISEMENT</h2>
-			</div>
-
-			<div data-role="popup" id="myPopup" class="ui-content"> 
-				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-left">Close</a> 
-				<p>Whoopsie ding dong! Something went wrong :(</p>
-			</div> 
-		</div>
-
-
-		<div id="gamePage" data-role="page" data-theme="a">
-			
-			<div data-role="header"> 
-				<a href="#homePage" class="ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext">Back</a>
-				<h1>GAME</h1> 
-				<a href="#" class="ui-btn ui-corner-all ui-icon-gear ui-btn-icon-notext">Settings</a>
 		  	</div>
 
 			<div data-role="main" class="ui-content"> 
@@ -220,9 +191,22 @@
 				</div>
 			</div> 
 			
+			<div data-role="footer" style="position: fixed; bottom: 3em; left: 0em; right: 0em;">		
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#" data-icon="home"></a></li>
+						<li><a href="#" data-icon="grid"></a></li>
+						<li><a href="#" data-icon="camera"></a></li>
+						<li><a href="#" data-icon="search"></a></li>
+						<li><a href="#" data-icon="user"></a></li>
+					</ul>
+				</div>
+			</div>
+
 			<div data-role="footer" style="position: fixed; bottom: 0; left: 0; right: 0;">
 				<h2 id="footer">//ADVERTISEMENT</h2>
 			</div>
+
 			<div data-role="popup" id="myPopup" class="ui-content"> 
 				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-left">Close</a> 
 				<p>Whoopsie ding dong! Something went wrong :(</p>
