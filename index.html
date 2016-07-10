@@ -1,7 +1,6 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<!-- <title>//TITLE</title> -->
 		<!-- Include meta tag to ensure proper rendering and touch zooming -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
@@ -117,66 +116,32 @@
 				$("#myPopup").popup("open"); 
 			}
 
-			var canvas, ctx; 
-			var width = 300; 
-			var height = 300; 
-			var rad = 0; 
-			var deg = 0; 
-			var r = 3; 
-			var x = width / 2; 
-			var y = height / 2; 
-			var t = 0; 
-			var fill = "white"; 
-
-			var dir = 2; 
-			var click = function(){
-			    dir *= -1; 
-			}
-
 			window.onload = function main(){ 
+				var canvas, ctx; 
+				var width = 300; 
+				var height = 300; 
+
 				canvas = document.createElement("canvas"); 
 				canvas.width = width; 
 				canvas.height = height; 
 				ctx = canvas.getContext("2d"); 
 				document.getElementById("gameContainer").appendChild(canvas); 
-				canvas.addEventListener("click", click, false); 
-			} 
-
-			setInterval(function(){ 
-				ctx.clearRect(0, 0, canvas.width, canvas.height); 
-				ctx.beginPath(); 
-				ctx.moveTo(x, y); 
-				ctx.lineTo(x + Math.sin(rad) * 20, y - Math.cos(rad) * 20); 
-				ctx.lineWidth = r; 
-				ctx.strokeStyle = "lime"; 
-				ctx.stroke(); 
+				
+				//ctx.clearRect(0, 0, canvas.width, canvas.height); 
+				var x = width / 2;  
+				var y = height / 2; 
+				var r = (x + y) / 3;  
+				ctx.beginPath();
+				ctx.arc(x, y, r, 0, Math.PI*2);
+				ctx.fillStyle = "turquoise"; 
+				ctx.fill(); 
 				ctx.closePath(); 
-
-				getPosition();  
-				getAngle(); 
-
-				console.log(Math.sin(rad)); 
-			}, 20); 
-
-			function getPosition(){
-				if(x > width - r || x < r || y > height - r || y < r){
-					ctx.beginPath(); 
-					ctx.fillStyle = "white"; 
-					ctx.fillRect(0, 0, canvas.width, canvas.height); 
-				}
-				x += Math.sin(rad); 
-				y -= Math.cos(rad); 
-			}
-
-			function getAngle(){
-				deg += dir; 
-				rad = deg * Math.PI / 180; 
-			}
+			} 
 
 		</script>
 	</head>
 	<body>
-		<div id="homePage" data-role="page" data-theme="a">
+		<div id="homePage" data-role="page" data-theme="b">
 			
 			<div data-role="header"> 
 				<a onclick="main()" class="ui-btn ui-corner-all ui-icon-bars ui-btn-icon-notext">Info</a>
@@ -196,7 +161,6 @@
 					<ul>
 						<li><a href="#" data-icon="home"></a></li>
 						<li><a href="#" data-icon="grid"></a></li>
-						<li><a href="#" data-icon="camera"></a></li>
 						<li><a href="#" data-icon="search"></a></li>
 						<li><a href="#" data-icon="user"></a></li>
 					</ul>
@@ -204,12 +168,12 @@
 			</div>
 
 			<div data-role="footer" style="position: fixed; bottom: 0; left: 0; right: 0;">
-				<h2 id="footer">//ADVERTISEMENT</h2>
+				<h2 id="footer">// ADS</h2>
 			</div>
 
 			<div data-role="popup" id="myPopup" class="ui-content"> 
 				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-left">Close</a> 
-				<p>Whoopsie ding dong! Something went wrong :(</p>
+				<p>Welcome to my popup! </p>
 			</div> 
 		</div>
 	</body>
