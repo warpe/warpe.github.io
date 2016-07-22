@@ -1,9 +1,11 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 	<head>
 		<!-- Include meta tag to ensure proper rendering and touch zooming -->
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"> 
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="mobile-web-app-capable" content="yes">  
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 		<script> 
@@ -103,28 +105,42 @@
 			}
 
 			canvas{
-				border: solid 2px turquoise;
-				background-color: black;
-				margin-left: -10px; 
-				margin-top: -10px;
+				display: block; 
+				position: relative; 
+				margin: auto; 
+				top: 0; 
+				bottom: 0; 
+				left: 0; 
+				right: 0; 
 			}
 
 		</style>
 		<script> 
+			var 
+			canvas, 
+			ctx, 
+			width, 
+			height; 
 
 			function main(){
 				$("#myPopup").popup("open"); 
 			}
 
 			window.onload = function main(){ 
-				var canvas, ctx; 
-				var width = 300; 
-				var height = 300; 
-
 				canvas = document.createElement("canvas"); 
+				width = window.innerWidth; 
+				height = window.innerHeight; 
+
+				if(width >= 500){
+					width = 320; 
+					height = 480; 
+					canvas.style.border = "1px solid #000"
+				}
+
 				canvas.width = width; 
 				canvas.height = height; 
 				ctx = canvas.getContext("2d"); 
+
 				document.getElementById("gameContainer").appendChild(canvas); 
 				
 				//ctx.clearRect(0, 0, canvas.width, canvas.height); 
@@ -155,17 +171,6 @@
 					</div>
 				</div>
 			</div> 
-			
-			<div data-role="footer" style="position: fixed; bottom: 3em; left: 0em; right: 0em;">		
-				<div data-role="navbar">
-					<ul>
-						<li><a href="#" data-icon="home"></a></li>
-						<li><a href="#" data-icon="grid"></a></li>
-						<li><a href="#" data-icon="search"></a></li>
-						<li><a href="#" data-icon="user"></a></li>
-					</ul>
-				</div>
-			</div>
 
 			<div data-role="footer" style="position: fixed; bottom: 0; left: 0; right: 0;">
 				<h2 id="footer">// ADS</h2>
