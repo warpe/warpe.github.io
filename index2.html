@@ -1,11 +1,10 @@
 <!DOCTYPE HTML>
-<html lang="en">
+<html>
 	<head>
+		<title>WORK</title>
 		<!-- Include meta tag to ensure proper rendering and touch zooming -->
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"> 
-		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="mobile-web-app-capable" content="yes">  
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 		<script> 
@@ -104,24 +103,11 @@
 				}
 			}
 
-			#feedContainer{
-				display: block; 
-				position: relative; 
-				margin: auto; 
-				border: 2px solid #000; 
-				width: 100%; 
-				height: 800; 
-			}
-			
-			.eventContainer{
-				display: block; 
-				position: relative; 
-				margin: auto; 
-				margin-top: 1%;
-				margin-bottom: 1%; 
-				border: 2px solid lime; 
-				width: 98%; 
-				height: 50%; 
+			canvas{
+				border: solid 2px turquoise;
+				background-color: black;
+				margin-left: -10px; 
+				margin-top: -10px;
 			}
 
 		</style>
@@ -131,6 +117,28 @@
 				$("#myPopup").popup("open"); 
 			}
 
+			window.onload = function main(){ 
+				var canvas, ctx; 
+				var width = 300; 
+				var height = 300; 
+
+				canvas = document.createElement("canvas"); 
+				canvas.width = width; 
+				canvas.height = height; 
+				ctx = canvas.getContext("2d"); 
+				document.getElementById("gameContainer").appendChild(canvas); 
+				
+				//ctx.clearRect(0, 0, canvas.width, canvas.height); 
+				var x = width / 2;  
+				var y = height / 2; 
+				var r = (x + y) / 3;  
+				ctx.beginPath();
+				ctx.arc(x, y, r, 0, Math.PI*2);
+				ctx.fillStyle = "turquoise"; 
+				ctx.fill(); 
+				ctx.closePath(); 
+			} 
+
 		</script>
 	</head>
 	<body>
@@ -138,36 +146,28 @@
 			
 			<div data-role="header"> 
 				<a onclick="main()" class="ui-btn ui-corner-all ui-icon-bars ui-btn-icon-notext">Info</a>
-				<h1>KA SKJER?</h1> 
+				<h1>Scooby Doo!</h1> 
 				<a onclick="main()" class="ui-btn ui-corner-all ui-icon-gear ui-btn-icon-notext">Settings</a>
 		  	</div>
 
 			<div data-role="main" class="ui-content"> 
 				<div class="ui-field-contain">
-
-					<div id="feedContainer">
-
-						<div class="eventContainer">
-							
-							<iframe src="http://www.fanrx.com/facebook/events.php?theme=custom&page=hulenbergen&bgcolor=000000&textcolor=00ffcc&linkcolor=ff00ff&max=1" width="100%" height="100%" frameborder="no" scrolling="auto"></iframe>
-
-							<!--
-							<div class="eventImgContainer"></div>
-							<div class="eventTextContainer">
-								<p>BILDE, TITTEL, Beskrivelse</p>
-							</div>
-							<div class="eventHandlingContainer"></div>	
-							-->
-						</div>
-						<div class="eventContainer">
-							<iframe src="http://www.fanrx.com/facebook/events.php?theme=custom&page=kvarteret&bgcolor=000000&textcolor=00ffcc&linkcolor=ff00ff&max=1" width="100%" height="100%" frameborder="no" scrolling="auto"></iframe>
-						</div>
-
-
+					<div id="gameContainer">
 					</div>
-
 				</div>
 			</div> 
+			
+			<div data-role="footer" style="position: fixed; bottom: 3em; left: 0em; right: 0em;">		
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#" data-icon="home"></a></li>
+						<li><a href="#" data-icon="grid"></a></li>
+						<li><a href="#" data-icon="search"></a></li>
+						<li><a href="#" data-icon="star"></a></li>
+						<li><a href="#" data-icon="user"></a></li>
+					</ul>
+				</div>
+			</div>
 
 			<div data-role="footer" style="position: fixed; bottom: 0; left: 0; right: 0;">
 				<h2 id="footer">// ADS</h2>

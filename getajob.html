@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>GET A JOB</title>
+		<!-- Include meta tag to ensure proper rendering and touch zooming -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<style>
+			html{ 
+				/* Prevent font scaling in landscape while allowing user zoom */ 
+				-webkit-text-size-adjust: 100%; 
+			} 
+
+			canvas{
+				border: solid 2px black;
+			}
+
+		</style>
+		<script> 
+			var canvas, ctx; 
+			var width = height = 500; 
+			
+			var xArr = [0,1,2,2,3,3,4,4,4,3,3,4,4,3,2,2,1,1,0,0,0,1,1,0]; 
+			var yArr = [0,0,0,1,1,0,0,1,2,2,3,3,4,4,4,3,3,4,4,3,2,2,1,1]; 
+			var i = 0; 
+
+			window.onload = function main(){ 
+				canvas = document.createElement("canvas"); 
+				canvas.width = width; 
+				canvas.height = height; 
+				ctx = canvas.getContext("2d"); 
+				document.getElementById("gameContainer").appendChild(canvas); 
+				
+			} 
+
+			setInterval(function draw(){
+				var x = xArr[i] * 100; 
+				var y = yArr[i] * 100; 
+				//ctx.clearRect(0, 0, canvas.width, canvas.height); 
+				ctx.beginPath();
+				ctx.moveTo(x, y); 
+				ctx.lineTo(x, y + 100); 
+				ctx.lineTo(x + 100, y + 100); 
+				ctx.lineTo(x + 100, y); 
+				ctx.closePath(); 
+				ctx.fillStyle = "turquoise"; 
+				ctx.fill(); 
+
+				if(i < xArr.length - 1){
+					i++; 
+				}else{
+					i = 0; 
+
+				}
+
+			}, 100); 
+
+		</script>
+	</head>
+	<body>
+		<div id="gameContainer" onclick="canvasClick(event);"></div>
+	</body>
+</html>
