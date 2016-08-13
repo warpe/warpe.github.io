@@ -104,7 +104,6 @@
 				}
 			}
 
-<<<<<<< HEAD
 			#feedContainer{
 				display: block; 
 				position: relative; 
@@ -123,61 +122,15 @@
 				border: 2px solid lime; 
 				width: 98%; 
 				height: 50%; 
-=======
-			canvas{
-				display: block; 
-				position: relative; 
-				margin: auto; 
-				top: 0; 
-				bottom: 0; 
-				left: 0; 
-				right: 0; 
->>>>>>> 4931cef5b21482d153e2de2a168befe549f2637f
 			}
 
 		</style>
 		<script> 
-			var 
-			canvas, 
-			ctx, 
-			width, 
-			height; 
 
 			function main(){
 				$("#myPopup").popup("open"); 
 			}
 
-<<<<<<< HEAD
-=======
-			window.onload = function main(){ 
-				canvas = document.createElement("canvas"); 
-				width = window.innerWidth; 
-				height = window.innerHeight; 
-
-				if(width >= 500){
-					width = 320; 
-					height = 480; 
-					canvas.style.border = "1px solid #000"
-				}
-
-				canvas.width = width; 
-				canvas.height = height; 
-				ctx = canvas.getContext("2d"); 
-
-				document.getElementById("gameContainer").appendChild(canvas); 
-				
-				//ctx.clearRect(0, 0, canvas.width, canvas.height); 
-				var x = width / 2;  
-				var y = height / 2; 
-				var r = (x + y) / 3;  
-				ctx.beginPath();
-				ctx.arc(x, y, r, 0, Math.PI*2);
-				ctx.fillStyle = "turquoise"; 
-				ctx.fill(); 
-				ctx.closePath(); 
-			} 
-
->>>>>>> 4931cef5b21482d153e2de2a168befe549f2637f
 		</script>
 	</head>
 	<body>
@@ -185,11 +138,7 @@
 			
 			<div data-role="header"> 
 				<a onclick="main()" class="ui-btn ui-corner-all ui-icon-bars ui-btn-icon-notext">Info</a>
-<<<<<<< HEAD
 				<h1>KA SKJER?</h1> 
-=======
-				<h1>Switch Ball!</h1> 
->>>>>>> 4931cef5b21482d153e2de2a168befe549f2637f
 				<a onclick="main()" class="ui-btn ui-corner-all ui-icon-gear ui-btn-icon-notext">Settings</a>
 		  	</div>
 
