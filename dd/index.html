@@ -3,8 +3,9 @@
 	<head>
 		<title>Dilemma Dating</title>
 		<!-- Include meta tag to ensure proper rendering and touch zooming -->
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-		<link rel="icon" type="image/png" href="favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="mobile-web-app-capable" content="yes">  
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 		<script> 
@@ -129,14 +130,7 @@
 				document.getElementById("gameContainer").appendChild(canvas);  
 				
 				//ctx.clearRect(0, 0, canvas.width, canvas.height); 
-				var x = width / 2;  
-				var y = height / 2; 
-				var r = (x + y) / 3;  
-				ctx.beginPath();
-				ctx.arc(x, y, r, 0, Math.PI*2);
-				ctx.fillStyle = "turquoise"; 
-				ctx.fill(); 
-				ctx.closePath(); 
+				
 			} 
 
 		</script>
