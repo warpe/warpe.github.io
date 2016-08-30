@@ -136,6 +136,13 @@
 				$("#myPopup").popup("open"); 
 			}
 
+			window.onload = function init(){
+				var placesArr = ["hulenbergen", "kvarteret"]; 
+				for(var i = 0; i < placesArr.length; i++){
+					//document.getElementById("feedContainer").innerHTML+=''
+				}
+			}
+
 		</script>
 	</head>
 	<body>
@@ -150,13 +157,12 @@
 			<div data-role="main" class="ui-content"> 
 				<div class="ui-field-contain">
 					<div id="feedContainer">
-						
-						<div class="eventContainer">
-							<iframe src="http://www.fanrx.com/facebook/events.php?theme=custom&page=hulenbergen&bgcolor=112233&textcolor=FFFFFF&linkcolor=FFFFFF&max=1" width="100%" height="100%" frameborder="no" scrolling="no"></iframe>
-						</div>
 
 						<div class="eventContainer">
 							<iframe src="http://www.fanrx.com/facebook/events.php?theme=custom&page=kvarteret&bgcolor=112233&textcolor=FFFFFF&linkcolor=FFFFFF&max=1" width="100%" height="100%" frameborder="no" scrolling="no"></iframe>
+						</div>
+						<div class="eventContainer">
+							<iframe src="http://www.fanrx.com/facebook/events.php?theme=custom&page=hulenbergen&bgcolor=112233&textcolor=FFFFFF&linkcolor=FFFFFF&max=1" width="100%" height="100%" frameborder="no" scrolling="no"></iframe>
 						</div>
 
 					</div>
